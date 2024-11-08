@@ -28,6 +28,11 @@ public class ProdutoController {
 	public List<Produto> listarProdutos() {
 		return produtoService.listarProdutos();
 	}
+	
+	@GetMapping("/nome/{nome}")
+	public Produto listarProdutoPorNome (@PathVariable("nome") String nome)  {
+		return produtoService.listarProdutoPorNome(nome);
+	}
 
 	@PostMapping
 	public Produto salvarProduto(@RequestBody @Validated Produto produto) {

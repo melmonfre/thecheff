@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.theCheff.The.Cheff.domain.entidades.Produto;
 import com.theCheff.The.Cheff.domain.produtoRepositoy.ProdutoRepository;
+import com.theCheff.The.Cheff.domain.user.User;
 
 @Service
 public class ProdutoService {
@@ -25,8 +26,16 @@ public class ProdutoService {
 	public Produto listarProdutoPorID(Long id) {
 		return produtoRepository.findById(id).get();
 	}
+	
+	
+	
+	public Produto listarProdutoPorNome(String nome)  {
+		return produtoRepository.findByNomeProduto(nome);
+	}
 
 	public void deletarProduto(Long id) {
 		produtoRepository.deleteById(id);
 	}
+
+	
 }
