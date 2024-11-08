@@ -43,9 +43,9 @@ public class Produto {
     private List<ProdutoPedido> pedidos = new ArrayList<>();
     
     
-    @JoinColumn(name = "id_usuario", referencedColumnName = "id")
-    @ManyToOne(cascade = CascadeType.MERGE)
-    private User user;
+    // @JoinColumn(name = "id_usuario", referencedColumnName = "id")
+    // @ManyToOne(cascade = CascadeType.MERGE)
+    // private User user;
     
     
 	public Produto() {
