@@ -3,6 +3,7 @@ package com.theCheff.The.Cheff.domain.entidades;
 import java.io.Serializable;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.theCheff.The.Cheff.domain.user.User;
 
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.JoinColumn;
@@ -22,4 +23,10 @@ public class ProdutoPedidoId implements Serializable {
 	@JoinColumn(name = "idPedido")
 	private Pedido pedido;
 
+	// @JsonIgnore
+	// @ManyToOne
+	// @JoinColumn (name = "idUser")
+	// private User user;
+
+	
 }

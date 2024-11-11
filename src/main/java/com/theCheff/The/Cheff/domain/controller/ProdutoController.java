@@ -18,7 +18,7 @@ import com.theCheff.The.Cheff.domain.service.ProdutoService;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/produtos")
+@RequestMapping("/product")
 public class ProdutoController {
 
 	@Autowired
@@ -34,8 +34,8 @@ public class ProdutoController {
 		return produtoService.listarProdutoPorNome(nome);
 	}
 
-	@PostMapping
-	public Produto salvarProduto(@RequestBody @Validated Produto produto) {
+	@PostMapping("/salvar")
+	public Produto salvarProduto(@RequestBody  Produto produto) {
 		return produtoService.salvarProduto(produto);
 	}
 	

@@ -9,130 +9,49 @@ import org.antlr.v4.runtime.misc.NotNull;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.theCheff.The.Cheff.domain.user.User;
 
-import jakarta.persistence.CascadeType;
+import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Positive;
+import lombok.Data;
 
-
-
-
-//@Data
+@Data
 @Entity
 @Table(name = "produtos")
 public class Produto {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idProduto;
-    //@NotBlank
-   
-    @NotNull
-   // @Positive
-    private BigDecimal preco;
-    @Column(unique = true)
-    private String nomeProduto;
-    @JsonIgnore
-    @OneToMany(mappedBy = "id.produto")
-    private List<ProdutoPedido> pedidos = new ArrayList<>();
-    
-    
-    // @JoinColumn(name = "id_usuario", referencedColumnName = "id")
-    // @ManyToOne(cascade = CascadeType.MERGE)
-    // private User user;
-    
-    
-	public Produto() {
-		this.idProduto = idProduto;
-		this.preco = preco;
-		this.nomeProduto = nomeProduto;
-		this.pedidos = pedidos;
-	}
-    
-    
-    
-    
-	public Produto(Long idProduto, BigDecimal preco, String nomeProduto, List<ProdutoPedido> pedidos) {
-		super();
-		this.idProduto = idProduto;
-		this.preco = preco;
-		this.nomeProduto = nomeProduto;
-		this.pedidos = pedidos;
-	}
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long idProduto;
+	@NotBlank
+	private String nomeProduto;
+	@NotNull
+	@Positive
+	private BigDecimal preco;
 
 
+	@JsonIgnore
+	@OneToMany(mappedBy = "id.produto")
+	private List<ProdutoPedido> pedidos = new ArrayList<>();
 
+	private Long userid;
 
-	public Long getIdProduto() {
-		return idProduto;
-	}
+	 @Lob
+	 @Basic(fetch = FetchType.LAZY)
+	 private byte[] image;
+	
 
-
-
-
-	public void setIdProduto(Long idProduto) {
-		this.idProduto = idProduto;
-	}
-
-
-
-
-	public BigDecimal getPreco() {
-		return preco;
-	}
-
-
-
-
-	public void setPreco(BigDecimal preco) {
-		this.preco = preco;
-	}
-
-
-
-
-	public String getNomeProduto() {
-		return nomeProduto;
-	}
-
-
-
-
-	public void setNomeProduto(String nomeProduto) {
-		this.nomeProduto = nomeProduto;
-	}
-
-
-
-
-	public List<ProdutoPedido> getPedidos() {
-		return pedidos;
-	}
-
-
-
-
-	public void setPedidos(List<ProdutoPedido> pedidos) {
-		this.pedidos = pedidos;
-	}
-
-
-
-
-	@Override
-	public String toString() {
-		return "Produto [idProduto=" + idProduto + ", preco=" + preco + ", nomeProduto=" + nomeProduto + ", pedidos="
-				+ pedidos + "]";
-	}
-    
-    
-    
-    
-
+	@ManyToOne
+	@JoinColumn (name =  "user_id",nullable = false)
+	private  User user;
 }
