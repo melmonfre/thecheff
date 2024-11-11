@@ -1,6 +1,7 @@
 package com.theCheff.The.Cheff.domain.produtoRepositoy;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -10,6 +11,8 @@ import com.theCheff.The.Cheff.domain.user.User;
 
 @Repository
 public interface ProdutoRepository extends JpaRepository<Produto, Long> {
-	User user = new User();
+	//User user = new User();
 	Produto findByNomeProduto(String nomeProduto);
+
+	Optional<Produto> findByNomeProdutoAndUser_Id(String nomeProduto, Long userId);
 }
