@@ -1,8 +1,8 @@
-package com.theCheff.The.Cheff.domain.model.entity;
+package com.theCheff.The.Cheff.domain.model.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 
-@Repository
+import com.theCheff.The.Cheff.domain.model.entity.Mesa;
+
 public interface MesaRepository extends JpaRepository<Mesa, Integer> {
 }

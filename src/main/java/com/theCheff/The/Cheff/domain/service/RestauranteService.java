@@ -8,7 +8,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import com.theCheff.The.Cheff.domain.model.entity.Restaurante;
-import com.theCheff.The.Cheff.domain.model.entity.RestauranteRepository;
+import com.theCheff.The.Cheff.domain.model.repository.RestauranteRepository;
 import com.theCheff.The.Cheff.util.EnvelopeService;
 
 @Service
