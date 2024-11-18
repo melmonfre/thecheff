@@ -1,5 +1,7 @@
 package com.theCheff.The.Cheff.domain.dtos;
 
-public record AutenticacaoDTO (String email, String senha) {
+import java.util.Collection;
+
+public record AutenticacaoDTO (String login, String senha ) {
 
 }
